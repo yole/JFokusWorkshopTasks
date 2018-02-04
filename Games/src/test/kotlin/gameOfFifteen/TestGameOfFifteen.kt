@@ -34,7 +34,7 @@ abstract class AbstractTestGameOfFifteen : AbstractTestGame() {
 
     @Test
     fun testCanMove() {
-        Assert.assertTrue("The move is always possible", game.canMove())
+        Assert.assertTrue("The move is always possible", !game.hasLost())
     }
 
     @Test

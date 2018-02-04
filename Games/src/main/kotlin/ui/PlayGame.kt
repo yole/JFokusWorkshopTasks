@@ -15,7 +15,7 @@ class PlayGame(val game: Game, val settings: GameSettings) : JPanel() {
         isFocusable = true
         addKeyListener(object : KeyAdapter() {
             override fun keyPressed(e: KeyEvent) {
-                if (game.hasWon() == false && game.canMove()) {
+                if (!game.hasWon() && !game.hasLost()) {
                     val direction = when (e.keyCode) {
                         KeyEvent.VK_LEFT -> Direction.LEFT
                         KeyEvent.VK_RIGHT -> Direction.RIGHT
@@ -70,7 +70,7 @@ class PlayGame(val game: Game, val settings: GameSettings) : JPanel() {
         if (value != 0)
             g.drawString(s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE - (TILE_SIZE - h) / 2 - 2)
 
-        if (game.hasWon() || game.canMove() == false) {
+        if (game.hasWon() || game.hasLost()) {
             g.color = Color(255, 255, 255, 30)
             g.fillRect(0, 0, width, height)
             g.color = Color(78, 139, 202)
@@ -78,7 +78,7 @@ class PlayGame(val game: Game, val settings: GameSettings) : JPanel() {
             if (game.hasWon()) {
                 g.drawString("You won!", 68, 150)
             }
-            if (!game.canMove()) {
+            else {
                 g.drawString("Game over!", 45, 160)
             }
         }

@@ -17,7 +17,7 @@ abstract class AbstractTestGame2048: AbstractTestGame() {
 
     @Test
     fun testCanMove() {
-        Assert.assertTrue("The move is possible if the board isn't full", game.canMove())
+        Assert.assertTrue("The move is possible if the board isn't full", !game.hasLost())
     }
 
     @Test
@@ -27,7 +27,7 @@ abstract class AbstractTestGame2048: AbstractTestGame() {
                 game.processMove(direction)
             }
         }
-        Assert.assertFalse("The move isn't possible if the board is full", game.canMove())
+        Assert.assertFalse("The move isn't possible if the board is full", !game.hasLost())
     }
 
     @Test
