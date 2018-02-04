@@ -50,7 +50,7 @@ class GameOfFifteen : Game {
         }
     }
 
-    override fun canMove() = true
+    override fun hasLost() = false
 
     override fun hasWon(): Boolean {
         val values = mutableListOf<Int?>()

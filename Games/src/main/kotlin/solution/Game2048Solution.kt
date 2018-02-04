@@ -22,7 +22,7 @@ class Game2048 : Game {
         board.addRandomValue()
     }
 
-    override fun canMove() = board.any { it == null }
+    override fun hasLost() = !board.any { it == null }
 
     override fun hasWon() = board.any { it == 2048 }
 

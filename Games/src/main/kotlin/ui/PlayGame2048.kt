@@ -19,5 +19,5 @@ object Game2048Settings : GameSettings("Game 2048", Color(0xbbada0)) {
 
 
 fun main(args: Array<String>) {
-    playGame(task.newGame2048(), Game2048Settings)
+    playGame(solution.newGame2048(), Game2048Settings)
 }
