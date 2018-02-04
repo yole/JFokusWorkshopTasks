@@ -1,11 +1,74 @@
 package tests
 
+import board.Cell
 import board.GameBoard
+import board.GameBoardImpl
 import org.junit.Assert
 import org.junit.Test
 
-abstract class AbstractTestGameBoard {
-    abstract fun <T> createGameBoard(width: Int): GameBoard<T>
+class AbstractTestGameBoard {
+    fun <T> createGameBoard(size: Int): GameBoard<T> = GameBoardImpl(size)
+
+    fun Cell?.print() = if (this != null) "($i, $j)" else ""
+
+    fun Collection<Cell>.print() = joinToString { it.print() }
+
+    @Test
+    fun testAllCells() {
+        val board = createGameBoard<Int>(2)
+        val cells = board.getAllCells().sortedWith(compareBy<Cell> { it.i }.thenBy { it.j })
+        Assert.assertEquals("(1, 1), (1, 2), (2, 1), (2, 2)", cells.print())
+    }
+    @Test
+    fun testRow() {
+        val board = createGameBoard<Int>(4)
+        val row = board.getRow(1, 1..2)
+        Assert.assertEquals("(1, 1), (1, 2)", row.print())
+    }
+
+    @Test
+    fun testColumn() {
+        val board = createGameBoard<Int>(4)
+        val row = board.getColumn(1..2, 3)
+        Assert.assertEquals("(1, 3), (2, 3)", row.print())
+    }
+
+    @Test
+    fun testRowReversedRange() {
+        val board = createGameBoard<Int>(4)
+        val row = board.getRow(1, 4 downTo 1)
+        Assert.assertEquals("(1, 4), (1, 3), (1, 2), (1, 1)", row.print())
+    }
+
+    @Test
+    fun testColumnReversedRange() {
+        val board = createGameBoard<Int>(4)
+        val row = board.getColumn(2 downTo 1, 1)
+        Assert.assertEquals("(2, 1), (1, 1)", row.print())
+    }
+
+    @Test
+    fun testNeighbour() {
+        with (createGameBoard<Int>(4)) {
+            val cell = Cell(2, 2)
+            org.junit.Assert.assertEquals("(1, 2)", cell.getNeighbour(board.Direction.UP).print())
+            org.junit.Assert.assertEquals("(3, 2)", cell.getNeighbour(board.Direction.DOWN).print())
+            org.junit.Assert.assertEquals("(2, 1)", cell.getNeighbour(board.Direction.LEFT).print())
+            org.junit.Assert.assertEquals("(2, 3)", cell.getNeighbour(board.Direction.RIGHT).print())
+        }
+    }
+
+    @Test
+    fun testNullableNeighbour() {
+        with (createGameBoard<Int>(4)) {
+            val cell = Cell(1, 1)
+            org.junit.Assert.assertNull(cell.getNeighbour(board.Direction.UP))
+            org.junit.Assert.assertNull(cell.getNeighbour(board.Direction.LEFT))
+            org.junit.Assert.assertEquals("(2, 1)", cell.getNeighbour(board.Direction.DOWN).print())
+            org.junit.Assert.assertEquals("(1, 2)", cell.getNeighbour(board.Direction.RIGHT).print())
+        }
+    }
+
 
     @Test
     fun testGetAndSetElement() {

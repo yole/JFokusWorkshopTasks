@@ -1,9 +1,10 @@
 package tests
 
 import board.GameBoard
+import board.GameBoardImpl
 
 abstract class AbstractTestGameWithSmallNumbers {
-    abstract fun <T> createGameBoard(width: Int): GameBoard<T>
+     fun <T> createGameBoard(size: Int): GameBoard<T> = GameBoardImpl(size)
 
     val width = 4
 

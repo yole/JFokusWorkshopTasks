@@ -1,14 +1,11 @@
 package task
 
-import board.Cell
-import board.Direction
-import board.Game
-import board.GameBoard
+import board.*
 import java.util.*
 
 /*
 Your task is to implement the game 2048 https://en.wikipedia.org/wiki/2048_(video_game)
-Implement the helper function first (moveAndMergeEqual in SurnameNameGame2048Helper.kt), then extension functions below.
+Implement the helper function first (moveAndMergeEqual in Game2048Task.kt), then extension functions below.
 
 Try to use methods of SquareBoard and GameBoard instead of reimplementing them.
 (You may use and add extensions like SquareBoard.indices() as well).
@@ -49,7 +46,7 @@ then the function moveAndMergeEqual transforms the input in the following way:
   b, null, a, a -> b, aa
   a, a, null, a -> aa, a
   a, null, a, a -> aa, a
-Examples and tests in TestMoveAndMergeValues.kt
+Examples and tests in AbstractTestMoveAndMergeValues.
  */
 fun <T : Any> List<T?>.moveAndMergeEqual(double: (T) -> T): List<T> {
     TODO()
@@ -62,17 +59,17 @@ fun generateRandomStartValue() = if (random.nextInt(10) == 9) 4 else 2
 Add a random value to a free cell in a board.
 The value should be 2 for 90% cases, 4 for the rest of the cases.
 Use the generateRandomStartValue function above.
-Examples and tests are in TestAddRandomValue.
+Examples and tests are in AbstractTestAddRandomValue.
  */
 fun GameBoard<Int?>.addRandomValue() {
     TODO()
 }
 
-/*
+/**
 Move values in a specified rowOrColumn only.
-Use the helper function 'moveAndMergeEqual' (in SurnameNameGame2048Helper.kt).
+Use the helper function 'moveAndMergeEqual'
 The values should be moved to the beginning of the row (or column), in the same manner as in the function 'moveAndMergeEqual'.
-Examples and tests in TestMoveValuesInRowOrColumn.
+Examples and tests in AbstractTestMoveValuesInRowOrColumn.
  */
 fun GameBoard<Int?>.moveValuesInRowOrColumn(rowOrColumn: List<Cell>): Boolean {
     TODO()
@@ -81,7 +78,7 @@ fun GameBoard<Int?>.moveValuesInRowOrColumn(rowOrColumn: List<Cell>): Boolean {
 /*
 Move values by the rules of the 2048 game to the specified direction.
 Use the moveValuesInRowOrColumn function above.
-Examples and tests in TestMoveValues.
+Examples and tests in AbstractTestMoveValues.
  */
 fun GameBoard<Int?>.moveValues(direction: Direction): Boolean {
     TODO()

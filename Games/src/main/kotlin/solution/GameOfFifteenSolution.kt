@@ -1,9 +1,6 @@
 package solution
 
-import board.Direction
-import board.GameBoard
-import board.reversed
-import board.Game
+import board.*
 import java.util.*
 
 /*

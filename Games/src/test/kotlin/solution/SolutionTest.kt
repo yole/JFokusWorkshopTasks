@@ -1,17 +1,11 @@
 package solutionTest
 
-/*
-import board.*
+import board.Cell
+import board.Direction
+import board.Game
+import board.GameBoard
 import solution.*
 import tests.*
-
-class SolutionTestGameBoard : AbstractTestGameBoard() {
-    override fun <T> createGameBoard(width: Int): GameBoard<T> = solution.createGameBoard(width)
-}
-
-class SolutionTestSquareBoard : AbstractTestSquareBoard() {
-    override fun createSquareBoard(width: Int): SquareBoard = solution.createSquareBoard(width)
-}
 
 class SolutionTestMoveAndMergeEqual : AbstractTestMoveAndMergeValues() {
     override fun <T : Any> moveAndMergeEqual(list: List<T?>, double: (T) -> T): List<T> =
@@ -19,21 +13,15 @@ class SolutionTestMoveAndMergeEqual : AbstractTestMoveAndMergeValues() {
 }
 
 class SolutionTestAddRandomValue : AbstractTestAddRandomValue() {
-    override fun <T> createGameBoard(width: Int): GameBoard<T> = solution.createGameBoard(width)
-
     override fun addRandomValue(board: GameBoard<Int?>) = board.addRandomValue()
 }
 
 class SolutionTestMoveValuesInRowOrColumn: AbstractTestMoveValuesInRowOrColumn() {
-    override fun <T> createGameBoard(width: Int): GameBoard<T> = solution.createGameBoard(width)
-
     override fun moveValuesInRowOrColumn(gameBoard: GameBoard<Int?>, rowOrColumn: List<Cell>): Boolean =
             gameBoard.moveValuesInRowOrColumn(rowOrColumn)
 }
 
 class SolutionTestMoveValues: AbstractTestMoveValues() {
-    override fun <T> createGameBoard(width: Int): GameBoard<T> = solution.createGameBoard(width)
-
     override fun moveValues(board: GameBoard<Int?>, direction: Direction): Boolean =
             board.moveValues(direction)
 }
@@ -49,4 +37,4 @@ class SolutionTestCountParity: AbstractTestCountParity() {
 class SolutionTestGameOfFifteen : AbstractTestGameOfFifteen() {
     override fun newGame(): Game = newGameOfFifteen()
 }
-*/
+

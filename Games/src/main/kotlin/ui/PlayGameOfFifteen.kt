@@ -17,5 +17,5 @@ object GameOfFifteenSettings : GameSettings("Game of fifteen", Color(0x909090)) 
 }
 
 fun main(args: Array<String>) {
-    playGame(solution.newGameOfFifteen(), GameOfFifteenSettings)
+    playGame(task.newGameOfFifteen(), GameOfFifteenSettings)
 }

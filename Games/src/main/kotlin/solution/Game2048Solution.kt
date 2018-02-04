@@ -1,9 +1,6 @@
 package solution
 
-import board.Cell
-import board.Direction
-import board.Game
-import board.GameBoard
+import board.*
 import java.util.*
 
 /*
@@ -96,7 +93,7 @@ Examples and tests in TestMoveValuesInRowOrColumn.
 fun GameBoard<Int?>.moveValuesInRowOrColumn(rowOrColumn: List<Cell>): Boolean {
     val values = rowOrColumn.map { this[it] }
     val movedValues = values.moveAndMergeEqual { it * 2 }
-    val movedValuesWithNulls = (0 until width).map { movedValues.getOrNull(it) }
+    val movedValuesWithNulls = (0 until size).map { movedValues.getOrNull(it) }
 
     if (values == movedValuesWithNulls) return false
 
@@ -113,15 +110,15 @@ Examples and tests in TestMoveValues.
  */
 fun GameBoard<Int?>.moveValues(direction: Direction): Boolean {
     val range = when (direction) {
-        Direction.UP, Direction.LEFT -> 1..width
-        Direction.DOWN, Direction.RIGHT -> width downTo 1
+        Direction.UP, Direction.LEFT -> 1..size
+        Direction.DOWN, Direction.RIGHT -> size downTo 1
     }
     val getRowOrColumn: (Int) -> List<Cell> = when (direction) {
         Direction.UP, Direction.DOWN -> { i -> getColumn(range, i) }
         Direction.RIGHT, Direction.LEFT -> { i -> getRow(i, range) }
     }
     var move = false
-    (1..width).forEach {
+    (1..size).forEach {
         val rowOrColumn = getRowOrColumn(it)
         if (moveValuesInRowOrColumn(rowOrColumn)) {
             move = true

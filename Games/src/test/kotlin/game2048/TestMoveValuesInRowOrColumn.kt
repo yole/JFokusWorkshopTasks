@@ -2,7 +2,6 @@ package tests
 
 import board.Cell
 import board.GameBoard
-import board.SquareBoard
 import org.junit.Assert
 import org.junit.Test
 
@@ -52,7 +51,7 @@ abstract class AbstractTestMoveValuesInRowOrColumn : AbstractTestGameWithSmallNu
     fun String.toMultiLineInput() = trim().replace(' ', '\n')
 
     fun testMoveInRowOrColumn(
-            getRowOrColumn: (SquareBoard) -> List<Cell>,
+            getRowOrColumn: (GameBoard<Int?>) -> List<Cell>,
             expected: String,
             input: String = defaultInput,
             expectedMove: Boolean = true
