@@ -32,7 +32,7 @@ class Game2048 : Game {
         }
     }
 
-    override fun get(i: Int, j: Int): Int? = board[i, j]
+    override fun get(row: Int, col: Int): Int? = board[row, col]
 }
 
 /*

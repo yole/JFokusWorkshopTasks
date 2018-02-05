@@ -18,28 +18,28 @@ class GameBoardImpl<T>(override val size: Int) : GameBoard<T> {
     }
 
     override fun Cell.getNeighbour(direction: Direction) = when (direction) {
-        Direction.UP -> getCellOrNull(i - 1, j)
-        Direction.DOWN -> getCellOrNull(i + 1, j)
-        Direction.RIGHT -> getCellOrNull(i, j + 1)
-        Direction.LEFT -> getCellOrNull(i, j - 1)
+        Direction.UP -> getCellOrNull(row - 1, col)
+        Direction.DOWN -> getCellOrNull(row + 1, col)
+        Direction.RIGHT -> getCellOrNull(row, col + 1)
+        Direction.LEFT -> getCellOrNull(row, col - 1)
     }
 
     private fun getCellOrNull(i: Int, j: Int): Cell? {
         return if (i in 1..size && j in 1..size) Cell(i, j) else null
     }
 
-    override fun getRow(i: Int, jRange: IntProgression): List<Cell> {
-        return jRange.map { j -> Cell(i, j) }
+    override fun getRow(row: Int, colRange: IntProgression): List<Cell> {
+        return colRange.map { j -> Cell(row, j) }
     }
 
-    override fun getColumn(iRange: IntProgression, j: Int): List<Cell> {
-        return iRange.map { i -> Cell(i, j) }
+    override fun getColumn(rowRange: IntProgression, col: Int): List<Cell> {
+        return rowRange.map { i -> Cell(i, col) }
     }
 
-    override operator fun get(i: Int, j: Int): T? = data[Cell(i, j)]
+    override operator fun get(row: Int, col: Int): T? = data[Cell(row, col)]
 
-    override operator fun set(i: Int, j: Int, value: T?) {
-        data[Cell(i, j)] = value
+    override operator fun set(row: Int, col: Int, value: T?) {
+        data[Cell(row, col)] = value
     }
 
     override operator fun get(cell: Cell): T? = data[cell]

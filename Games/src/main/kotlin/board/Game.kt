@@ -27,5 +27,5 @@ interface Game {
     /**
      * Returns the number at the given position (1-based).
      */
-    operator fun get(i: Int, j: Int): Int?
+    operator fun get(row: Int, col: Int): Int?
 }

@@ -9,14 +9,14 @@ import org.junit.Test
 class AbstractTestGameBoard {
     fun <T> createGameBoard(size: Int): GameBoard<T> = GameBoardImpl(size)
 
-    fun Cell?.print() = if (this != null) "($i, $j)" else ""
+    fun Cell?.print() = if (this != null) "($row, $col)" else ""
 
     fun Collection<Cell>.print() = joinToString { it.print() }
 
     @Test
     fun testAllCells() {
         val board = createGameBoard<Int>(2)
-        val cells = board.getAllCells().sortedWith(compareBy<Cell> { it.i }.thenBy { it.j })
+        val cells = board.getAllCells().sortedWith(compareBy<Cell> { it.row }.thenBy { it.col })
         Assert.assertEquals("(1, 1), (1, 2), (2, 1), (2, 2)", cells.print())
     }
     @Test
@@ -92,8 +92,8 @@ class AbstractTestGameBoard {
         val cells = board.filter { it == 'a' }
         Assert.assertEquals(1, cells.size)
         val cell = cells.first()
-        Assert.assertEquals(1, cell.i)
-        Assert.assertEquals(1, cell.j)
+        Assert.assertEquals(1, cell.row)
+        Assert.assertEquals(1, cell.col)
     }
 
     @Test
@@ -102,8 +102,8 @@ class AbstractTestGameBoard {
         board[1, 1] = 'a'
         board[1, 2] = 'b'
         val cell = board.find { it == 'a' }
-        Assert.assertEquals(1, cell?.i)
-        Assert.assertEquals(1, cell?.j)
+        Assert.assertEquals(1, cell?.row)
+        Assert.assertEquals(1, cell?.col)
     }
 
     @Test

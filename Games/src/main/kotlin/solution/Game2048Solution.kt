@@ -32,7 +32,7 @@ class Game2048 : Game {
         }
     }
 
-    override fun get(i: Int, j: Int): Int? = board[i, j]
+    override fun get(row: Int, col: Int): Int? = board[row, col]
 }
 
 /*
@@ -81,7 +81,7 @@ fun GameBoard<Int?>.addRandomValue() {
     val newValue = generateRandomStartValue()
     val emptyCells = filter { it == null }.toList()
     val cell = emptyCells[Random().nextInt(emptyCells.size)]
-    this[cell.i, cell.j] = newValue
+    this[cell.row, cell.col] = newValue
 }
 
 /*

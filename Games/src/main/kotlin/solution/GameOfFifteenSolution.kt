@@ -67,7 +67,7 @@ class GameOfFifteen : Game {
         board[cellToMove] = null
     }
 
-    override fun get(i: Int, j: Int): Int? {
-        return board[i, j]
+    override fun get(row: Int, col: Int): Int? {
+        return board[row, col]
     }
 }
