@@ -29,10 +29,3 @@ class TaskTestGame2048: AbstractTestGame2048() {
     override fun newGame(): Game = task.newGame2048()
 }
 
-class TaskTestCountParity: AbstractTestCountParity() {
-    override fun countParity(permutation: List<Int>): Boolean = task.countParity(permutation)
-}
-
-class TaskTestGameOfFifteen : AbstractTestGameOfFifteen() {
-    override fun newGame(): Game = task.newGameOfFifteen()
-}
